@@ -1,19 +1,17 @@
 const express = require('express')
-//Import
-const cartRouter = require('./router/cart_router')
-const productRouter = require('./router/product_router')
 
 const app = express()
 const PORT = process.env.PORT || 8080
-
 //Middlewares
-app.use('/public', express.static(__dirname + '/public'))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+//Routers
+const productRouter = require('./routers/product.router')
+const cartRouter = require('./routers/cart.router')
 
 app.use( '/api/products', productRouter )
 app.use( '/api/cart', cartRouter )
-
+//404
 app.use(function (req, res, next) {
     res.status(404)
     res.send("Sorry. Route / method can't finded.")
