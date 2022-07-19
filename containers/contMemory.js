@@ -17,7 +17,7 @@ class ContainerMemory {
         const objID = this.data.find(obj => obj.id == id)
         return objID
     }
-    async editById(obj, id) {
+    async editByID(obj, id) {
         obj['id'] = id
         const idx = this.getAll().findIndex(p => p.id === id)
         this.data.splice(idx, 1, obj)

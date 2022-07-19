@@ -25,7 +25,7 @@ class ContainerMongo {
     async getByID(id) {
         return this.model.find({_id: new ObjectId(id)})
     }
-    async editById(obj, id) {
+    async editByID(obj, id) {
         const objUpdated = await this.model.updateOne(
             { _id: new ObjectId(id)},
             { $set: obj }
